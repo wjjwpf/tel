@@ -157,19 +157,21 @@
     // 菜单划出js
     $(function(){
         $('.xs').click(function(){
-    $('.boxl').animate({'left':'-8.0213rem'});
+        $('.boxl').animate({'left':'-8.0213rem'});
         $('.cmenu').css('display','block');
 
         $('.cmenu').animate({'width':'8.0213rem'});
         
         $('.zzc').css('display','block');
+         $('html,body').addClass('ovfHiden');
     });
     // 隐藏菜单
-    $('.zzc').click(function(){
-        $('.boxl').animate({'left':'0'});
-        $('.cmenu').animate({'width':'0'});
-        $('.zzc').css('display','none');
-    });
+        $('.zzc').click(function(){
+            $('.boxl').animate({'left':'0'});
+            $('.cmenu').animate({'width':'0'});
+            $('.zzc').css('display','none');
+             $('html,body').removeClass('ovfHiden');
+        });
     });
 </script>
 </html>
