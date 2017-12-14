@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,maximum-scale=1.0" />
+    <title>联系我们</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/lianxi.css">
+    <script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/shipei.js"></script>
+    <!-- 地图API -->
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+</head>
+<body onLoad="init()">
+    <script>
+        function init() {
+            var center = new qq.maps.LatLng(39.907080,116.456530);
+            var map = new qq.maps.Map(document.getElementById("container"), {
+                center: center,
+                zoom: 15
+            });
+            //创建一个Marker
+            var marker = new qq.maps.Marker({
+                //设置Marker的位置坐标
+                position: center,
+                //设置显示Marker的地图
+                map: map
+            });
+
+            //设置Marker的可见性，为true时可见,false时不可见，默认属性为true
+            marker.setVisible(true);
+            //设置Marker的动画属性为从落下
+            marker.setAnimation(qq.maps.MarkerAnimation.DOWN);
+            //设置Marker是否可以被拖拽，为true时可拖拽，false时不可拖拽，默认属性为false
+            marker.setDraggable(false);
+            ////设置Marker自定义图标的属性，size是图标尺寸，该尺寸为显示图标的实际尺寸，origin是切图坐标，该坐标是相对于图片左上角默认为（0,0）的相对像素坐标，anchor是锚点坐标，描述经纬度点对应图标中的位置
+            // var anchor = new qq.maps.Point(0, 39),
+            //     size = new qq.maps.Size(42, 68),
+            //     origin = new qq.maps.Point(0, 0),
+            //     icon = new qq.maps.MarkerImage(
+            //         "/doc_v2/img/nilt.png",
+            //         size,
+            //         origin,
+            //         anchor
+            //     );
+            // marker.setIcon(icon);
+            // //设置Marker阴影图片属性，size是图标尺寸，该尺寸为显示图标的实际尺寸，origin是切图坐标，该坐标是相对于图片左上角默认为（0,0）的相对像素坐标，anchor是锚点坐标，描述经纬度点对应图标中的位置
+            // var anchorb = new qq.maps.Point(3, -30),
+            //     sizeb = new qq.maps.Size(42, 11),
+            //     origin = new qq.maps.Point(0, 0),
+            //     iconb = new qq.maps.MarkerImage(
+            //         "/doc_v2/img/nilb.png",
+            //         sizeb,
+            //         origin,
+            //         anchorb
+            //     );
+            // marker.setShadow(iconb);
+            //设置标注的名称，当鼠标划过Marker时显示
+            marker.setTitle("北京市朝阳区建国门外大街甲6号中环世贸c座11层");
+
+            //添加信息窗口
+            var info = new qq.maps.InfoWindow({
+                map: map
+            });
+            //获取标记的可拖动属性
+            info.open();
+            info.setContent('中邑国信 (北京) 信息技术有限公司');
+            info.setPosition(marker.getPosition());
+            //标记Marker点击事件
+            qq.maps.event.addListener(marker, 'click', function() {
+                info.open();
+                info.setContent('北京市朝阳区建国门外大街甲6号中环世贸c座11层');
+                info.setPosition(marker.getPosition());
+            });
+            //设置Marker停止拖动事件
+            qq.maps.event.addListener(marker, 'dragend', function() {
+                info.open();
+                info.setContent('<div style="text-align:center;white-space:nowrap;' +
+                    'margin:10px;">中邑国信 (北京) 信息技术有限公司</div>');
+                //getPosition()  返回Marker的位置
+                info.setPosition(marker.getPosition());
+            });
+        }
+    </script>
+    <div class="box clearfix">
+        <div class="boxtop">
+            <h1 class="logo">中国</h1>
+            <div class="topc">联系我们</div>
+            <div class="xs"></div>
+        </div>
+        <!-- 占位 -->
+        <div class="zw"></div>
+        <!-- 回到顶部 -->
+        <!-- <div class="hddb"></div> -->
+        <div class="boxs">
+            <div class="boxl">
+                <!-- 遮罩层 -->
+                <div class="zzc"></div>
+                
+                <!-- 联系我们 -->
+                <div class="lianxi-warp">
+                    <div class="lianxi-wen">
+                        <!-- <h2>联系我们</h2> -->
+                    </div>
+                    <!-- 图片 -->
+                    <div class="tu">
+                       <!--  <img src="images/05.jpg" alt="" title="" /> -->
+                        <img src="images/05.jpg" alt="" title="" />
+                    </div>
+                    <!-- 地图 -->
+                    <div class="lianxi-di">
+                        <p>地址：北京市朝阳区中环世贸c座11层</p>
+                        <div id="container"></div>
+                    </div>
+                    
+                    <!-- 信息 -->
+                    <div class="dizhi">
+                        <h3>中邑国信 (北京) 信息技术有限公司</h3>
+                        <p>地址：北京市朝阳区建国门外大街甲6号中环世贸C座11层  </p>
+                        <p>电话：010-65068703</p>
+                        <p>邮箱：Services@telchina.org</p>
+                    </div>
+                </div> 
+                <!-- 底部 -->
+                <div class="btm">copyright@2016All rights reserved</div>
+            </div>
+            <!-- 右边菜单栏 -->
+            <div class="cmenu">
+                <ul class="cmenu-ul">
+                    <li class="cmenu-li">
+                        <a href="../../index.html" class="cmenu-a"><span class="a-span span1"></span>网站首页</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="../guanyu/gytel.html" class="cmenu-a"><span class="a-span span2"></span>关于.TEL</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="../advantage/advantage.html" class="cmenu-a"><span class="a-span span3"></span>产品优势</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="../anli/anli.html" class="cmenu-a"><span class="a-span span4"></span>案例模版</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="../whois/whois.html" class="cmenu-a"><span class="a-span span5"></span>Whois查询</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="lianxi.html" class="cmenu-a"><span class="a-span span6"></span>联系我们</a>
+                    </li>
+                    <li class="cmenu-li">
+                        <a href="../wenti/wenti.html" class="cmenu-a"><span class="a-span span7"></span>常见问题</a>
+                    </li>
+                </ul>
+            </div>
+        </div>  
+    </div>   
+</body>
+<script type="text/javascript">
+    // 菜单划出js
+    $(function(){
+        $('.xs').click(function(){
+    $('.boxl').animate({'left':'-8.0213rem'});
+        $('.cmenu').css('display','block');
+
+        $('.cmenu').animate({'width':'8.0213rem'});
+        
+        $('.zzc').css('display','block');
+    });
+    // 隐藏菜单
+    $('.zzc').click(function(){
+        $('.boxl').animate({'left':'0'});
+        $('.cmenu').animate({'width':'0'});
+        $('.zzc').css('display','none');
+    });
+    });
+</script>
+</html>
+
+
+
